@@ -15,7 +15,7 @@ Download docker images
 
 We need four docker images in order for "dev mode" to run against the
 supplied docker compose script. If you installed the [fabric-samples](https://github.com/hyperledger/fabric-samples) 
-or the [morpheo-fabric-boostrap](https://github.com/MorpheoOrg/morpheo-fabric-bootstrap)
+or the [urbanstack-fabric-boostrap](https://github.com/UrbanStackOrg/urbanstack-fabric-bootstrap)
 repo clone and followed the instructions to
 [download-platform-specific-binaries](https://hyperledger-fabric.readthedocs.io/en/release/samples.html#download-platform-specific-binaries), then you should have the necessary
 Docker images installed locally.

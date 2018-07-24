@@ -1,30 +1,30 @@
-# Morpheo Orchestrator Chaincode
+# UrbanStack Orchestrator Chaincode
 
-This is the Orchestrator of the Morpheo platform with the blockchain. We use the private and permissioned solution called [Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/release/).
-Morpheo chaincode corresponds to the set of smart contracts, which are used to orchestrate operations on the [Morpheo platform](http://morpheo.co/).
-It is the translation of [Morpheo Orchestrator](https://github.com/MorpheoOrg/morpheo-orchestrator) with a blockchain solution.
+This is the Orchestrator of the UrbanStack platform with the blockchain. We use the private and permissioned solution called [Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/release/).
+UrbanStack chaincode corresponds to the set of smart contracts, which are used to orchestrate operations on the [UrbanStack platform](http://urbanstack.co/).
+It is the translation of [UrbanStack Orchestrator](https://github.com/UrbanStackOrg/urbanstack-orchestrator) with a blockchain solution.
 
 **Licence:** CECILL 2.1 (compatible with GNU GPL)
 
 
 ## How to interact with the orchestrator
 
-Use the [Morpheo-Fabric-Bootstrap](https://github.com/MorpheoOrg/morpheo-fabric-bootstrap) to create a network to interact with the Orchestrator.
+Use the [UrbanStack-Fabric-Bootstrap](https://github.com/UrbanStackOrg/urbanstack-fabric-bootstrap) to create a network to interact with the Orchestrator.
 Once the network is up, the chaincode is installed and instantiated, you can go inside the docker cli to interact with the Orchestrator. Below some interaction examples, do not forget to set the correct environment variable:
 ```
 peer chaincode query -n mycc -c '{"Args":["queryObject", "algo_1"]}' -C $CHANNEL_NAME
 peer chaincode query -n mycc -c '{"Args":["queryObjects", "algo"]}' -C $CHANNEL_NAME
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerProblem", "e568587d-572c-4714-8084-378ed50d1c52", "2", "0pa81bfc-b5f4-5ba2-b81a-b464248f02a1, 0kk81bfc-b5f4-5ba2-b81a-b464248f02e3"]}' -C $CHANNEL_NAME
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerItem", "algo", "0pa81baa-b5f4-5ba2-b81a-b464248f02d2", "problem_1", "mytopalgo"]}' -C $CHANNEL_NAME
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerItem", "data", "9pa81bfc-b5f8-5ba2-b81a-b464248f02d2", "problem_1", "psg"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerProblem", "e568587d-572c-4714-8084-378ed50d1c52", "2", "0pa81bfc-b5f4-5ba2-b81a-b464248f02a1, 0kk81bfc-b5f4-5ba2-b81a-b464248f02e3"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerItem", "algo", "0pa81baa-b5f4-5ba2-b81a-b464248f02d2", "problem_1", "mytopalgo"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerItem", "data", "9pa81bfc-b5f8-5ba2-b81a-b464248f02d2", "problem_1", "psg"]}' -C $CHANNEL_NAME
 peer chaincode query -n mycc -c '{"Args":["queryProblemItems", "data", "problem_1"]}' -C $CHANNEL_NAME
 peer chaincode query -n mycc -c '{"Args":["queryStatusLearnuplet", "todo"]}' -C $CHANNEL_NAME
 // replace algo_0 with correct key
 peer chaincode query -n mycc -c '{"Args":["queryAlgoLearnuplet", "algo_0"]}' -C $CHANNEL_NAME
 // replace learnuplet_0 with correct key
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["setUpletWorker", "learnuplet_0", "Arbeiter_12"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["setUpletWorker", "learnuplet_0", "Arbeiter_12"]}' -C $CHANNEL_NAME
 // replace learnuplet_0 with correct key
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["reportLearn", "learnuplet_0", "done", "0.82", "{\"data_3\": 0.78, \"data_4\": 0.88}", "{\"data_2\": 0.80}"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["reportLearn", "learnuplet_0", "done", "0.82", "{\"data_3\": 0.78, \"data_4\": 0.88}", "{\"data_2\": 0.80}"]}' -C $CHANNEL_NAME
 ```
 
 ## Chaincode-docker-devmode
@@ -134,9 +134,9 @@ Args:
 - `itemName`, such as `mysuperalgo`
 
 ```
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerItem",
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerItem",
 "algo", "0pa81bfc-b5f4-5ba2-b81a-b464248f02d2", "problem_1", "topalgo"]}' -C $CHANNEL_NAME
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerItem", "data", "9pa81bfc-b5f4-5ba2-b81a-b464248f02d2", "problem_1", "psg"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerItem", "data", "9pa81bfc-b5f4-5ba2-b81a-b464248f02d2", "problem_1", "psg"]}' -C $CHANNEL_NAME
 ```
 
 #### + `registerProblem`: to register a new problem
@@ -148,7 +148,7 @@ Args:
 
 
 ```
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerProblem", "dda81bfc-b5f4-5ba2-b81a-b464248f02d2", "2", "0pa81bfc-b5f4-5ba2-b81a-b464248f02a1, 0pa81bfc-b5f4-5ba2-b81a-b464248f02e3"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["registerProblem", "dda81bfc-b5f4-5ba2-b81a-b464248f02d2", "2", "0pa81bfc-b5f4-5ba2-b81a-b464248f02a1, 0pa81bfc-b5f4-5ba2-b81a-b464248f02e3"]}' -C $CHANNEL_NAME
 ```
 
 
@@ -177,7 +177,7 @@ Args:
 - `worker`: worker identifier... to be defined
 
 ```
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["setUpletWorker", "learnuplet_f50844e0-90e7-4fb8-a2aa-3d7e49204584", "Arbeiter_12"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["setUpletWorker", "learnuplet_f50844e0-90e7-4fb8-a2aa-3d7e49204584", "Arbeiter_12"]}' -C $CHANNEL_NAME
 ```
 
 #### + `reportLearn`: to report the output of a learning task
@@ -189,7 +189,7 @@ Args:
 - `trainPerf`: performances on each train data, such as `{\"data_12\": 0.89, \"data_22\": 0.92, \"data_34\": 0.88, \"data_44\": 0.96}`
 - `testPerf`: performances on each test data, such as `{\"data_2\": 0.82, \"data_4\": 0.94, \"data_6\": 0.88}`
 ```
-peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["reportLearn", "learnuplet_f50844e0-90e7-4fb8-a2aa-3d7e49204584", "done", "0.82", "{\"data_3\": 0.78, \"data_4\": 0.88}", "{\"data_2\": 0.80}"]}' -C $CHANNEL_NAME
+peer chaincode invoke -o orderer.urbanstack.co:7050 --tls true --cafile $ORDERER_CA -n mycc -c '{"Args":["reportLearn", "learnuplet_f50844e0-90e7-4fb8-a2aa-3d7e49204584", "done", "0.82", "{\"data_3\": 0.78, \"data_4\": 0.88}", "{\"data_2\": 0.80}"]}' -C $CHANNEL_NAME
 ```
 
 
@@ -197,6 +197,3 @@ peer chaincode invoke -o orderer.morpheo.co:7050 --tls true --cafile $ORDERER_CA
 ## TODO
 
 - [ ] register several data at a time
-
-
-# urbanstack-orchestrator-chaincode
